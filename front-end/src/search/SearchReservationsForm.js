@@ -47,6 +47,7 @@ function SearchReservationsForm(){
 
             <ErrorAlert error={error} />
             <ReservationTable reservations={foundReservations} />
+            
             {foundReservations.length === 0 ? <h6>No reservations found</h6> : null}
         </div>
     );

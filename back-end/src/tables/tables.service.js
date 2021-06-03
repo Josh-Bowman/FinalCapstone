@@ -22,18 +22,11 @@ function read(table_id) {
         .then((createdTable) => createdTable[0]);
 }
 
-function readReservation(reservation_id) {
-    return knex("reservations")
-        .select("*")
-        .where({ reservation_id: reservation_id })
-        .first();
-}
 
 function update(updatedTable) {
     return knex(tableName)
         .where({ table_id: updatedTable.table_id })
         .update(updatedTable, "*")
-        // .update({ reservation_id: reservation_id , status: "seated" });
 }
 
 function free(table_id) {
@@ -48,5 +41,4 @@ module.exports = {
     read,
     update,
     free, // DELETE
-    // readReservation,
 }

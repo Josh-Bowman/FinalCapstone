@@ -69,16 +69,6 @@ async function isTableInUse(req, res, next) {
 // MIDDLEWARE (3) - UPDATE
 async function isSeatReservationValid(req, res, next) {
     const foundTable = res.locals.table;
-//     if (!req.body.data) {
-//         return next({
-//             status: 400,
-//             message: "Request body must have a 'data' property.",
-//         });
-//     }
-//     next();
-// }
-// MIDDLEWARE (4) - UPDATE
-// async function checkReservationRequirements(req, res, next) {
     const foundReservation = await reservationsService.read(req.body.data.reservation_id);
 
     if (!foundReservation) {
@@ -127,14 +117,6 @@ async function list(req, res) {
     res.json({data: response});
 }
 
-// async function seatReservation(req, res) {
-//     const {reservation_id} = req.body.data;
-//     const {table} = res.locals;
-//     const data = await service.setReservationToTable(table.table_id, Number(reservation_id));
-//     await reservationsService.updateReservationAfterTableReset(Number(reservation_id), "seated");
-//     res.json({data});
-// }
-
 async function create(req, res) {
     const newTable = res.locals.newTable;
     const data = await service.create(newTable);
@@ -153,7 +135,7 @@ async function update(req, res) {
 }
 
 // DELETE
-async function destroy(req, res, next) {
+async function destroy(req, res) {
     const table = res.locals.table;
     const reservation_id = table.reservation_id;
     const data = await service.free(table.table_id);
@@ -167,14 +149,10 @@ async function destroy(req, res, next) {
 module.exports = {
     list: [asyncErrorBoundary(list)],
     create: [isNewTableValid, asyncErrorBoundary(create)],
-    // seatReservation: [
-    //     asyncErrorBoundary(seatReservation),
-    // ],
     update: [
         asyncErrorBoundary(doesTableExists),
         asyncErrorBoundary(isTableInUse),
         asyncErrorBoundary(isSeatReservationValid),
-        // asyncErrorBoundary(seatReservation),
         asyncErrorBoundary(update)
     ],
     delete: [

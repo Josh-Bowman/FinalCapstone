@@ -94,12 +94,15 @@ function SeatReservationForm({tables,loadTables, renderReservations}){
                     </div>
                 </div>
                 <div className="form-group col mt-5 p-0">
+
                     <button className="btn btn-danger mr-2" onClick={()=> history.goBack()}>
                         Cancel
                     </button>
+
                     <button type="submit" className="btn btn-primary">
                         Submit
                     </button>
+                    
                 </div>
             </form>
             <ErrorAlert error={error} />
