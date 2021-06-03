@@ -186,7 +186,7 @@
 	 res.json({data});
  }
  
- async function update(req, res, next) {
+ async function update(req, res) {
 	 const updateData = req.body.data;
 	 const {reservation_id} = req.params;
 	 const data = await service.update(Number(reservation_id), updateData);
