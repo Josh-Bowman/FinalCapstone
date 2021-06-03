@@ -58,7 +58,7 @@ function Routes() {
             <Route exact={true} path="/reservations">
                 <Redirect to={"/dashboard"} />
             </Route>
-            <Route path="/dashboard">
+            <Route exact={true} path="/dashboard">
                 <Dashboard
                     reservations={reservations}
                     tables={tables}
@@ -69,7 +69,7 @@ function Routes() {
                     renderReservations={renderReservations}
                 />
             </Route>
-            <Route path="/reservations/:reservation_id/seat">
+            <Route exact={true} path="/reservations/:reservation_id/seat">
                 <SeatReservationForm
                     reservations={reservations}
                     tables={tables}
@@ -77,20 +77,20 @@ function Routes() {
                     renderReservations={renderReservations}
                 />
             </Route>
-            <Route path="/reservations/:reservation_id/edit">
+            <Route exact={true} path="/reservations/:reservation_id/edit">
                 <NewReservationForm
                     loadReservations={loadReservations}
                     date={date}
                     renderReservations={renderReservations}
                 />
             </Route>
-            <Route path="/reservations/new">
+            <Route exact={true} path="/reservations/new">
                 <NewReservationForm loadReservations={loadReservations} date={date} />
             </Route>
-            <Route path="/tables/new">
+            <Route exact={true} path="/tables/new">
                 <NewTableForm loadTables={loadTables} />
             </Route>
-            <Route path="/search">
+            <Route exact={true} path="/search">
                 <SearchReservationsForm />
             </Route>
             <Route>

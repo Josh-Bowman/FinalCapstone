@@ -67,8 +67,8 @@ function SeatReservationForm({tables,loadTables, renderReservations}){
         <div>
             <h2 className="mt-3 mb-5">Seat Reservation</h2>
 
-            {formErrors.map((valError, index) => (
-                <ErrorAlert key={index} error={valError} />
+            {formErrors.map((valError) => (
+                <ErrorAlert error={valError} />
             ))}
 
             <form onSubmit={onCreateHandler} className="w-50">
